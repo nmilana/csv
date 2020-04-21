@@ -12,9 +12,6 @@ if _in not in lst_in:
     quit()
 print(f'{l} files {lst_in}')
 
-
-
-
 lst_d = os.listdir(f"in/{_in}")
 l = len(lst_d)
 print(f'{l} files {lst_d}')
@@ -30,23 +27,26 @@ for fl in lst_d:
 
     all = []
     _set = set()
-    dic = {}
+    comm_csv = ''
+    dic5 = {}
     j = 0
     for line in f:
         j += 1
         if j == 1: continue
         all.append(line[1:-2].split('";"'))
         el = all[-1][1::2]
+        comm_csv += f'{el[0]};{el[1]}\n'
         _set.add(el[0])
-        if el[0] in dic:
-            dic[el[0]] += f' {all[-1][3]}'
+
+        if el[0] in dic5:
+            dic5[el[0]] += f';{el[1]}'
         else:
-            dic[el[0]] = f'{all[-1][3]}'
+            dic5[el[0]] = f'{el[1]}'
 
     lst = ''
     dog = ''
     dog5 = ''
-    dic_csv = ''
+    dicset_csv = ''
     i = 1
     for name in _set:
         lst += name + '\n'
@@ -55,7 +55,7 @@ for fl in lst_d:
         if not (i % 5):
             dog5 += dog[:-1] + '\n'
             dog = ''
-        dic_csv += f'"{name}";"{dic[name]}"\n'
+        dicset_csv += f'"{name}";"{dic5[name]}"\n'
         i += 1
     dog5 += dog[:-1] + '\n'
 
@@ -67,10 +67,10 @@ for fl in lst_d:
     f.write(f'{dog5}')
     f.close()
 
-    f = open(f"out/{_in}/{fl[:-4]}/dic.txt", "w", encoding='utf-8')
-    f.write(f'{dic}')
+    f = open(f"out/{_in}/{fl[:-4]}/all.csv", "w", encoding='utf-8')
+    f.write(f'{comm_csv}')
     f.close()
 
-    f = open(f"out/{_in}/{fl[:-4]}/dic.csv", "w", encoding='utf-8')
-    f.write(f'{dic_csv}')
+    f = open(f"out/{_in}/{fl[:-4]}/dicset.csv", "w", encoding='utf-8')
+    f.write(f'{dicset_csv}')
     f.close()
