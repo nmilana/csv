@@ -44,27 +44,36 @@ for fl in lst_d:
             dic5[el[0]] = f'{el[1]}'
 
     lst = ''
-    dog = ''
+    dog1 = ''
     dog5 = ''
+    dog10 = ''
     dicset_csv = ''
     i = 1
     for name in _set:
         lst += name + '\n'
-        dog += '@' + name + ' '
-        # print(dog)
-        if not (i % 5):
-            dog5 += dog[:-1] + '\n'
-            dog = ''
+        dog1 += '@' + name[:-1] + '\n'
+        dog5 += '@' + name[:-1] + (' ' if i % 5 else '\n')
+        dog10 += '@' + name[:-1] + (' ' if i % 10 else '\n')
         dicset_csv += f'"{name}";"{dic5[name]}"\n'
         i += 1
-    dog5 += dog[:-1] + '\n'
+    dog5 = dog5[:-1] + '\n'
+    # print(f'\n{dog5}')
+    dog10 = dog10[:-1] + '\n'
 
     f = open(f"out/{_in}/{fl[:-4]}/list.txt", "w", encoding='utf-8')
     f.write(f'{lst}')
     f.close()
 
+    f = open(f"out/{_in}/{fl[:-4]}/dog1.txt", "w", encoding='utf-8')
+    f.write(f'{dog1}')
+    f.close()
+
     f = open(f"out/{_in}/{fl[:-4]}/dog5.txt", "w", encoding='utf-8')
     f.write(f'{dog5}')
+    f.close()
+
+    f = open(f"out/{_in}/{fl[:-4]}/dog10.txt", "w", encoding='utf-8')
+    f.write(f'{dog10}')
     f.close()
 
     f = open(f"out/{_in}/{fl[:-4]}/all.csv", "w", encoding='utf-8')
