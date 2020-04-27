@@ -51,9 +51,9 @@ for fl in lst_d:
     i = 1
     for name in _set:
         lst += name + '\n'
-        dog1 += '@' + name[:-1] + '\n'
-        dog5 += '@' + name[:-1] + (' ' if i % 5 else '\n')
-        dog10 += '@' + name[:-1] + (' ' if i % 10 else '\n')
+        dog1 += '@' + name + '\n'
+        dog5 += '@' + name + (' ' if i % 5 else '\n')
+        dog10 += '@' + name + (' ' if i % 10 else '\n')
         dicset_csv += f'"{name}";"{dic5[name]}"\n'
         i += 1
     dog5 = dog5[:-1] + '\n'
