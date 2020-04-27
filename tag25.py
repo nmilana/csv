@@ -7,9 +7,13 @@ with open('./input/mix/tags.txt', 'rt', encoding='utf-8') as file:
 list_tags = "#".join("".join(tags_raw.splitlines()).split('#')).split(' ')
 print(len(list_tags))
 
+set_tags = set(list_tags)
+print(len(set_tags))
+
+
 i = 1
 tag25 = ''
-for item in list_tags:
+for item in set_tags:
     tag25 += item + ' '
     if not i % 25:
         with open(f"out/{_in}/tag25_{str(int(i / 25)).zfill(2)}.txt", "w", encoding='utf-8') as file:
@@ -17,7 +21,7 @@ for item in list_tags:
         tag25 = ''
     i += 1
 
-print(tag25)
+# print(tag25)
 
 if tag25 != '':
     with open(f"out/{_in}/tag25_{str(int(i / 25) + 1).zfill(2)}.txt", "w", encoding='utf-8') as file:
