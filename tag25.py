@@ -9,7 +9,7 @@ l = len(lst_d)
 print(f'{l} files {lst_d} in "in/{_in}" folder')
 
 
-pattern = '[^0-9a-zA-Zа-яА-я_]'
+pattern = r'[^0-9a-zA-Zа-яА-я_]'
 
 for fl in lst_d:
 
