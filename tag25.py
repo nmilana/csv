@@ -34,7 +34,7 @@ for fl in lst_d:
     for item in set_tags:
         tag25 += re.sub(pattern, '', item) + '\n'
         if not i % 25:
-            with open(f"out/{_in}/{fl[:-4]}/tag25_{str(int(i / 25)).zfill(2)}.txt", "w", encoding='utf-8') as file:
+            with open(f"out/{_in}/{fl[:-4]}/{fl[:-4]}_{str(int(i / 25)).zfill(2)}.txt", "w", encoding='utf-8') as file:
                 file.write(f'{tag25}')
             tag25 = ''
         i += 1
@@ -42,6 +42,6 @@ for fl in lst_d:
     # print(tag25)
 
     if tag25 != '':
-        with open(f"out/{_in}/{fl[:-4]}/tag25_{str(int(i / 25) + 1).zfill(2)}.txt", "w", encoding='utf-8') as file:
+        with open(f"out/{_in}/{fl[:-4]}/{fl[:-4]}_{str(int(i / 25) + 1).zfill(2)}.txt", "w", encoding='utf-8') as file:
             file.write(f'{tag25}')   
 
