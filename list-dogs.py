@@ -1,4 +1,5 @@
 import os
+import re
 import time
 import random
 
@@ -15,8 +16,9 @@ print(f'{l} files {lst_in} in "in" folder')
 
 lst_d = os.listdir(f"in/{_in}")
 l = len(lst_d)
-print(f'{l} files {lst_d} in "in/list" folder')
+print(f'{l} files {lst_d} in "in/{_in}" folder')
 
+pattern = '[^0-9a-zA-Zа-яА-я_]'
 
 for fl in lst_d:
     f = open(f'in/{_in}/{fl}', "r", encoding='utf-8')
@@ -31,13 +33,13 @@ for fl in lst_d:
     dog10 = ''
     i = 1
     for name in f:
-        print(name[:-1])
+        # print(name[:-1])
         dog1 += '@' + name[:-1] + '\n'
         dog5 += '@' + name[:-1] + (' ' if i % 5 else '\n')
         dog10 += '@' + name[:-1] + (' ' if i % 10 else '\n')
         i += 1
     dog5 = dog5[:-1] + '\n'
-    print(f'\n{dog5}')
+    # print(f'\n{dog5}')
     dog10 = dog10[:-1] + '\n'
     # print(dog10)
 

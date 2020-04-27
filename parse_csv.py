@@ -1,4 +1,5 @@
 import os
+import re
 import time
 import random
 
@@ -16,13 +17,14 @@ lst_d = os.listdir(f"in/{_in}")
 l = len(lst_d)
 print(f'{l} files {lst_d}')
 
+pattern = '[^0-9a-zA-Zа-яА-я_]'
 
 for fl in lst_d:
     f = open(f'in/{_in}/{fl}', "r", encoding='utf-8')
 
     lst_out = os.listdir(f"out/{_in}")
     if f'{fl[:-4]}' not in lst_out:
-        print(f"Make '{fl[:-4]}' folder in out/{_in} folder")
+        print(f"Make '{fl[:-4]}' folder in 'out/{_in}' folder")
         os.mkdir(f"out/{_in}/{fl[:-4]}")
 
     all = []
