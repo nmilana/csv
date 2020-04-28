@@ -5,6 +5,12 @@ import random
 
 
 _in = "csv"
+
+with open(f'{_in}-great.txt', "rt", encoding='utf-8') as g:
+    great = g.read()
+# great = "Ку-ку"
+
+
 lst_in = os.listdir(f"in")
 l = len(lst_in)
 if _in not in lst_in:
@@ -49,6 +55,7 @@ for fl in lst_d:
     dog1 = ''
     dog5 = ''
     dog10 = ''
+    great_dog10 = ''
     dicset_csv = ''
     i = 1
     for name in _set:
@@ -61,6 +68,10 @@ for fl in lst_d:
     dog5 = dog5[:-1] + '\n'
     # print(f'\n{dog5}')
     dog10 = dog10[:-1] + '\n'
+
+    lst_q10 = dog10.split("\n")[:-1]
+    for el in lst_q10:
+        great_dog10 += great + ' ' + el + '\n'
 
     f = open(f"out/{_in}/{fl[:-4]}/list.txt", "w", encoding='utf-8')
     f.write(f'{lst}')
@@ -76,6 +87,10 @@ for fl in lst_d:
 
     f = open(f"out/{_in}/{fl[:-4]}/dog10.txt", "w", encoding='utf-8')
     f.write(f'{dog10}')
+    f.close()
+
+    f = open(f"out/{_in}/{fl[:-4]}/great-dog10.txt", "w", encoding='utf-8')
+    f.write(f'{great_dog10}')
     f.close()
 
     f = open(f"out/{_in}/{fl[:-4]}/all.csv", "w", encoding='utf-8')
