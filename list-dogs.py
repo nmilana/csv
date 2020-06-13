@@ -38,18 +38,26 @@ for fl in lst_d:
     dog5 = ''
     dog10 = ''
     great_dog10 = ''
+    comma = ''
+    comma20 = ''
     i = 1
     for name in f:
         # print(name[:-1])
         dog1 += '@' + name[:-1] + '\n'
+        comma += name[:-1] + ','
         dog5 += '@' + name[:-1] + (' ' if i % 5 else '\n')
         dog10 += '@' + name[:-1] + (' ' if i % 10 else '\n')
+        comma20 += name[:-1] + (',' if i % 20 else '\n')
         i += 1
     f.close()
     dog5 = dog5[:-1] + '\n'
     # print(f'\n{dog5}')
     dog10 = dog10[:-1] + '\n'
     # print(dog10)
+    comma = comma[:-1] + '\n'
+    # print(f'\n{comma}')
+    comma20 = comma20[:-1] + '\n'
+    # print(comma20)
 
     lst_q10 = dog10.split("\n")[:-1]
     for el in lst_q10:
@@ -70,4 +78,12 @@ for fl in lst_d:
 
     f = open(f"out/{_in}/{fl[:-4]}/great-dog10.txt", "w", encoding='utf-8')
     f.write(f'{great_dog10}')
+    f.close()
+
+    f = open(f"out/{_in}/{fl[:-4]}/comma20.txt", "w", encoding='utf-8')
+    f.write(f'{comma20}')
+    f.close()
+
+    f = open(f"out/{_in}/{fl[:-4]}/comma.txt", "w", encoding='utf-8')
+    f.write(f'{comma}')
     f.close()
